@@ -1,0 +1,31 @@
+*{
+	margin:0px;			
+}
+.trendline{
+	width:1px;
+	height:1px;
+	background-color:red;
+	position:absolute;
+	border-radius:15px;
+}
+.newdiv{
+	position:absolute;
+	height:5px;
+	width:5px;
+	background-color:blue;
+	border-radius:15px;
+}
+#graph{
+	margin:10px;
+	height:400px;
+	width:400px;
+	border-style:solid;
+	border-color:black;
+	border-width:1px;
+}
+.btn{
+	margin-left:4px;
+}
+#msgbox{
+	padding:5px;
+}

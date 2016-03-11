@@ -1,0 +1,8 @@
+#!/usr/bin/env python
+def main():
+	with open('static/linereg.js','r') as f:
+		linereg_js = f.read()
+	print 'content-type:text/html\n'
+	print linereg_js
+if __name__ == '__main__':
+	main()

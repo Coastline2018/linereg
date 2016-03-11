@@ -1,0 +1,8 @@
+#!/usr/bin/env python
+def main():
+	with open('linereg.html','r') as f:
+		linereg = f.read()
+	print 'content-type:text/html\n'
+	print linereg
+if __name__ == '__main__':
+	main()
