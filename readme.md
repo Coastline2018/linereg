@@ -13,4 +13,5 @@ Linear regression is performed in python by minimizing the cost function through
 
 The output (theta values) is returned to `linereg.html` for plotting, where a trendline is drawn over the data. 
 
-![alt tag](https://github.com/markedwinharvey/linereg/blob/master/media/before.trendline.png)
+![before trendline](https://github.com/markedwinharvey/linereg/blob/master/media/before.trendline.png)
+![after trendline](https://github.com/markedwinharvey/linereg/blob/master/media/after.trendline.png)
