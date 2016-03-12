@@ -34,24 +34,22 @@ def main():
 	
 	def compute(alpha):
 		#initialize some parameters
-		th0=0.; th1=0.; 
-		th0_tmp=0.
+		th0=0.; th1=0.; th0_tmp=0.
 		m=len(x)
-		datalist=[]; cost_new=0.; cost_old=0.
-		iter=4; precision = .0001
-
+		cost_new=0.; cost_old=0.
+		precision = .0001
 		th0s=[];th1s=[];J=[];diffs=[]
 		
-		while 1:
+		while 1:	
+			#new theta parameters
 			th0_tmp=th0-alpha/m*th0_sum(th0,th1)		
 			th1=th1-alpha/m*th1_sum(th0,th1)
 			th0=th0_tmp
-
+			#new cost
 			cost_old=cost_new
 			cost_new=1./(2*m)*cost_sum(th0,th1)
-			if cost_new > (cost_old+1000000):
+			if cost_new > (cost_old+1000000):	#cost explosion; alpha too high
 				return 'high'
-		
 			diff=cost_new-cost_old
 		
 			th0s.append(th0)
@@ -59,24 +57,19 @@ def main():
 			J.append(cost_new)
 			diffs.append(diff)
 		
-			datalist.append([th0,th1,cost_new,diff])	
-			if abs(diff) < precision:
+			if abs(diff) < precision:	#cost minimized
 				return th0,th1
 
-	
-	alpha=.1	
+	alpha=.1	#initial alpha
 	while 1:	#auto-generate alpha value by trial
 		result=compute(alpha)	
 		if result == 'high':
-			alpha=alpha*99./100
+			alpha=alpha*99./100	#new alpha
 		else:
 			th0=result[0]
 			th1=result[1]
 			break
-	elapsed = int(10*(time.time()-start))/10.
-	#alpha = str(alpha).split('.')[1]
-	#alpha = str(alpha).format
-	
+	elapsed = int(10*(time.time()-start))/10.	
 	package = [th0,th1,elapsed,'%.2E' % Decimal(str(alpha))]
 	print json.dumps(package)
 	
