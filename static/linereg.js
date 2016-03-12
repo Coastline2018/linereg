@@ -40,7 +40,11 @@ $(document).on('click','#send_data',function(){
 				result = JSON.parse(result);
 				var b = parseInt(1000*result[0])/1000.;
 				var m = parseInt(1000*result[1])/1000;
-				$('#msgbox').html('Trendline: y = '+String(m)+' * x + '+String(b));	
+				$('#msgbox').html(
+					'Trendline: y = '+String(m)+'x + '+String(b)+'<br>'+
+					'Processing Time: '+result[2]+' s <br>'+
+					'Learning Rate: '+result[3]
+				);	
 				gen_trend(m,b);
 			}
 		}

@@ -5,18 +5,14 @@ to linereg.py for trendline fitting. The learning rate is automatically
 selected and the cost is minimized by gradient descent. The resulting 
 slope and intercept parameters are sent back to linereg.html and 
 overlaid on the original data. '''
-import cgi,json,numpy as np,sys,copy,time
-#import matplotlib
-#matplotlib.use('TkAgg')
-#import matplotlib.pyplot as plt
+import cgi,json,sys,copy,time
+from decimal import Decimal
 print
-start=time.time()
+
 def main():
+	start=time.time()
 	global x
 	global y
-	global th0
-	global th1
-	th0=0.;th1=0.
 	
 	points = cgi.FieldStorage()['package'].value
 	points = json.loads(points)
@@ -77,7 +73,11 @@ def main():
 			th0=result[0]
 			th1=result[1]
 			break
-	package = [th0,th1]
+	elapsed = int(10*(time.time()-start))/10.
+	#alpha = str(alpha).split('.')[1]
+	#alpha = str(alpha).format
+	
+	package = [th0,th1,elapsed,'%.2E' % Decimal(str(alpha))]
 	print json.dumps(package)
 	
 if __name__ == '__main__':
