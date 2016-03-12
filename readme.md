@@ -1,4 +1,4 @@
-`linereg` is an simple experiment in linear regression plotting of user-generated data, written in python 2.7. 
+`linereg` generates trendlines by linear regression on user-input data. 
 
 The program is invoked from the command line with the command `python start.py`, 
 which starts a localhost server (`server.py`), serving on port 8000. 
