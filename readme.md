@@ -12,3 +12,5 @@ The 'regression' button sends the point data to `linereg.py` for processing via 
 Linear regression is performed in python by minimizing the cost function through gradient descent. 
 
 The output (theta values) is returned to `linereg.html` for plotting, where a trendline is drawn over the data. 
+
+[[https://github.com/markedwinharvey/linereg/before.trendline.png]]
