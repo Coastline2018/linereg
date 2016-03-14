@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta content-type='http-equiv' content='text/html; charset=utf-8'></meta>	
-	<title>linereg - linear regression tool for arbitrary data sets</title>
+	<title>linereg - Linear Regression by Gradient Descent</title>
 	<link rel='stylesheet' type='text/css' href='static/linereg_css'></link>
 	<script type='text/javascript' src='https://code.jquery.com/jquery-2.1.3.js'></script>
 	<script type='text/javascript' src='static/linereg_js'></script>
@@ -13,7 +13,9 @@
 	</div>
 	<div id='container2'>
 		<button class='btn' id='send_data'>regression</button>
-		<button class='btn' id='clear'>clear</button><br>
+		<button class='btn' id='clear'>clear</button>
+		<span id='prec_out'>precision: <textarea id='prec_in'>0.0001</textarea></span>
+		<span id='working'>Working...</span><br>
 		<div id='msgbox'></div>
 	</div>
 </body>

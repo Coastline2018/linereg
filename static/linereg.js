@@ -27,28 +27,39 @@ function drawDot(x,y,graphHeight){
 $(document).on('click','#send_data',function(){
 	//send data for processing
 	$('#msgbox').html('');
-	$.ajax({
-		method:	'post',
-		url:	'linereg.py',
-		data:	{'package':JSON.stringify(points)},
-		success:function(result){
-			//receive results
-			if (result.substring(0,2) == 'no'){
-				$('#msgbox').html(result);
+	$('#working').css({'display':'inline-block'});
+	var prec = $('#prec_in').val();
+	if (! isNaN(prec)){
+		$.ajax({
+			method:	'post',
+			url:	'linereg.py',
+			data:	{'package':JSON.stringify([points,prec])},
+			success:function(result){
+				//receive results
+				$('#working').css({'display':'none'});
+				if (result.substring(0,2) == 'in'){
+					$('#msgbox').html(result);
+				}
+				else{						
+					result = JSON.parse(result);
+					var b = parseInt(1000*result[0])/1000.;
+					var m = parseInt(1000*result[1])/1000;			
+					$('#msgbox').html(	
+						'Trendline: y = '+String(m)+'x + '+String(b)+'<br>'+
+						'Processing Time: '+result[2]+' s <br>'+
+						'Learning rate (alpha): '+result[3]+'<br>'+
+						'Iterations to alpha: '+result[4]+'<br>'+
+						'Iterations to cost minimization: '+result[5]+'<br>'
+					);			
+					gen_trend(m,b);
+				}
 			}
-			else{			
-				result = JSON.parse(result);
-				var b = parseInt(1000*result[0])/1000.;
-				var m = parseInt(1000*result[1])/1000;
-				$('#msgbox').html(
-					'Trendline: y = '+String(m)+'x + '+String(b)+'<br>'+
-					'Processing Time: '+result[2]+' s <br>'+
-					'Learning Rate: '+result[3]
-				);	
-				gen_trend(m,b);
-			}
-		}
-	});
+		});
+	}
+	else{
+		$('#working').css({'display':'none'});
+		$('#msgbox').html('precision value not a number');
+	}
 });
 
 function draw_trend(x,y){
@@ -58,8 +69,7 @@ function draw_trend(x,y){
 	dot.className = 'trendline';
 	dot.style.marginLeft = x-2+'px';
 	dot.style.marginTop = graphHeight - y -2+ 'px';
-	$('#graph').append(dot);
-	
+	$('#graph').append(dot);	
 }
 
 function gen_trend(m,b){

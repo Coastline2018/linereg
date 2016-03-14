@@ -41,9 +41,6 @@
 	border-width:1px;
 }
 .btn{
-/*
-	margin-top:440px;
-	*/
 	margin-left:5px;
 }
 #msgbox{
@@ -51,3 +48,20 @@
 	padding:5px;
 	width:400px;
 }
+#working{
+	margin-left:10px;
+	font-size:13px;
+	color:gray;
+	display:none;
+}
+#prec_out{
+	font-size:12px;
+	margin-left:10px;
+}
+#prec_in{
+	resize:none;
+	height:18px;
+	width:70px;
+	vertical-align:top;
+	overflow:hidden;
+}	
