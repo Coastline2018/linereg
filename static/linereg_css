@@ -1,8 +1,0 @@
-#!/usr/bin/env python
-def main():
-	with open('static/linereg.css','r') as f:
-		linereg_css = f.read()
-	print 'content-type: text/css\n'
-	print linereg_css
-if __name__ == '__main__':
-	main()
